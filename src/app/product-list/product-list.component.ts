@@ -13,17 +13,19 @@ export class ProductListComponent implements OnInit {
   addModalRef: BsModalRef;
   nameFormControl: FormControl = new FormControl();
   priceFormControl: FormControl = new FormControl();
+  items: any[] = [];
 
   constructor(private modalService: BsModalService, private apiCall: ApiCallService) { }
 
   ngOnInit(): void {
+    this.getItems();
   }
 
   openModal(template: TemplateRef<any>) {
     this.addModalRef = this.modalService.show(template);
   }
 
-  addNmewIte(): void {
+  addNewItem(): void {
     
     let obj = {
       name : this.nameFormControl.value,
@@ -32,9 +34,15 @@ export class ProductListComponent implements OnInit {
     this.apiCall.postProduct(obj).subscribe( response => {
       console.log("apicallljhggjd");
       this.addModalRef.hide();
+      this.getItems();
     })
   }
 
-
+  getItems(): void {
+    this.apiCall.getProduct().subscribe( response => {
+      this.items = response;
+      console.log(response);
+    })
+  }
 
 }
