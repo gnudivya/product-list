@@ -4,6 +4,7 @@ import { DashboradComponent } from './dashborad/dashborad.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
+  { path: '',redirectTo:'dashboard',pathMatch:'full'},
   { path: 'dashboard',component: DashboradComponent },
   { path: 'product-list', component: ProductListComponent}
 

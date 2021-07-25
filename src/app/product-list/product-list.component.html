@@ -1,1 +1,40 @@
-<p class ="border">product-list works!</p>
+<div class="d-flex p-5" >
+    <div>
+        <i class="bi bi-arrow-left-circle-fill link-primary  mr-3" ></i>
+        <a class="link-primary" [routerLink]="'/dashboard'">Primary link</a>
+    </div>
+    <div class="ml-auto">
+        <button type="button" class="btn btn-primary">Add Item</button>
+    </div>
+</div>
+
+
+<div class="p-5">
+    <table class="table border">
+        <thead>
+          <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>coffee</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>tea</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>coldCoffee</td>
+            <td>100</td>
+          </tr>
+        </tbody>
+      </table>
+    
+</div>
