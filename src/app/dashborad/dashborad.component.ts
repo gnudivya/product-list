@@ -15,7 +15,7 @@ isLoading = true;
   ngOnInit(): void {
     this.api.getProduct().subscribe(products =>{
       // console.log(products);
-      this.count = products.legnth;
+      this.count = products.length;
       this.isLoading = false;  
     })
   }

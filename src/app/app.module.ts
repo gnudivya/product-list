@@ -9,6 +9,8 @@ import { DashboradComponent } from './dashborad/dashborad.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ApiCallService } from './api-call.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { ApiCallService } from './api-call.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonsModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot(),
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [
     ApiCallService

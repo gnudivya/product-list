@@ -4,10 +4,36 @@
         <a class="link-primary" [routerLink]="'/dashboard'">Primary link</a>
     </div>
     <div class="ml-auto">
-        <button type="button" class="btn btn-primary">Add Item</button>
+        <button type="button" class="btn btn-primary" (click)="openModal(addPopup)">Add Item</button>
     </div>
 </div>
 
+
+<ng-template #addPopup>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Item</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="addModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" [formControl]="nameFormControl">
+            <div id="emailHelp" class="form-text"> {{nameFormControl.value}}</div>
+          </div>
+         
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Price</label>
+            <input type="number" class="form-control" [formControl]="priceFormControl" >
+            <div id="emailHelp" class="form-text"> {{priceFormControl.value}}</div>
+          </div>
+          <div class="d-flex">
+            <button type="submit" class="btn btn-primary ml-auto" (click)="addNmewIte()">Submit</button>
+          </div>
+         
+    </div>
+</ng-template>
 
 <div class="p-5">
     <table class="table border">
