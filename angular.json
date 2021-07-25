@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "poc1"
+  "defaultProject": "poc1",
+  "cli": {
+    "analytics": "78f74934-8027-4198-89da-fd0ce8f69c2e"
+  }
 }
