@@ -14,9 +14,11 @@ import { ApiCallService } from '../api-call.service';
 export class ProductListComponent implements OnInit {
   
   addModalRef: BsModalRef;
+  editModalRef: BsModalRef;
   nameFormControl: FormControl = new FormControl();
   priceFormControl: FormControl = new FormControl();
   items: any[] = [];
+  id = '';
 
   constructor(private modalService: BsModalService, private apiCall: ApiCallService) { }
 
@@ -26,6 +28,15 @@ export class ProductListComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.addModalRef = this.modalService.show(template);
+    this.nameFormControl.setValue('');
+    this.priceFormControl.setValue('');
+  }
+
+  openEditModal(template:TemplateRef<any>, item: any ) {
+    this.editModalRef = this.modalService.show(template);
+    this.nameFormControl.setValue(item.name);
+    this.priceFormControl.setValue(item.price);
+    this.id = item._id;
   }
 
   addNewItem(): void {
@@ -54,5 +65,19 @@ export class ProductListComponent implements OnInit {
       this.getItems();
     })
   }
+
+  editItem(): void {
+    let obj = {
+      name: this.nameFormControl.value,
+      price: this.priceFormControl.value
+    };
+    this.apiCall.updateProduct(obj, this.id).subscribe( response => {
+
+      console.log("updated");
+      this.editModalRef.hide();
+      this.getItems();
+    })
+  }
+
 
 }

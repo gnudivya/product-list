@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiCallService {
-  baseUrl ="https://crudcrud.com/api/6c13d7980f4a4c9f854bd2073ba380bf"
+  baseUrl ="https://crudcrud.com/api/d6a7b2a0c5344b759e929f323188be27"
 
   constructor( private http:HttpClient) { }
 
@@ -23,4 +23,8 @@ export class ApiCallService {
   return this.http.delete(this.baseUrl + '/product/' + id)
  }
 
+ updateProduct(obj: any, id: string): Observable<any>{
+   return this.http.put(this.baseUrl + '/product/' + id, obj);
+ }
 }
+ 
