@@ -11,6 +11,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ApiCallService } from './api-call.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     ModalModule.forRoot(),
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, BsDropdownModule.forRoot()
   ],
   providers: [
     ApiCallService

@@ -3,10 +3,13 @@ import { FormControl } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ApiCallService } from '../api-call.service';
 
+ 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+
 })
 export class ProductListComponent implements OnInit {
   
@@ -42,6 +45,13 @@ export class ProductListComponent implements OnInit {
     this.apiCall.getProduct().subscribe( response => {
       this.items = response;
       console.log(response);
+    })
+  }
+
+  deleteItem(id: string): void {
+    this.apiCall.deleteProduct(id).subscribe( response => {
+      console.log("deleted");
+      this.getItems();
     })
   }
 

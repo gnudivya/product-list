@@ -19,4 +19,8 @@ export class ApiCallService {
   return this.http.post( this.baseUrl + '/product', obj);
  } 
 
+ deleteProduct(id: string): Observable<any>{
+  return this.http.delete(this.baseUrl + '/product/' + id)
+ }
+
 }
