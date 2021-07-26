@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef  } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ApiCallService } from '../api-call.service';
 
@@ -15,8 +15,8 @@ export class ProductListComponent implements OnInit {
   
   addModalRef: BsModalRef;
   editModalRef: BsModalRef;
-  nameFormControl: FormControl = new FormControl();
-  priceFormControl: FormControl = new FormControl();
+  nameFormControl: FormControl = new FormControl('', [Validators.required]);
+  priceFormControl: FormControl = new FormControl('', [Validators.required, Validators.min(1)]);
   items: any[] = [];
   id = '';
 
@@ -45,11 +45,16 @@ export class ProductListComponent implements OnInit {
       name : this.nameFormControl.value,
       price : this.priceFormControl.value
     }
-    this.apiCall.postProduct(obj).subscribe( response => {
-      console.log("apicallljhggjd");
-      this.addModalRef.hide();
-      this.getItems();
-    })
+    this.nameFormControl.markAsTouched();
+    this.priceFormControl.markAsTouched();
+    if (this.nameFormControl.valid && this.priceFormControl.valid) {
+      this.apiCall.postProduct(obj).subscribe( response => {
+        console.log("apicallljhggjd");
+        this.addModalRef.hide();
+        this.getItems();
+      })
+    }
+    
   }
 
   getItems(): void {
@@ -71,12 +76,18 @@ export class ProductListComponent implements OnInit {
       name: this.nameFormControl.value,
       price: this.priceFormControl.value
     };
-    this.apiCall.updateProduct(obj, this.id).subscribe( response => {
 
-      console.log("updated");
-      this.editModalRef.hide();
-      this.getItems();
-    })
+    this.nameFormControl.markAsTouched();
+    this.priceFormControl.markAsTouched();
+    if(this.nameFormControl.valid && this.priceFormControl.valid) {
+      this.apiCall.updateProduct(obj, this.id).subscribe( response => {
+
+        console.log("updated");
+        this.editModalRef.hide();
+        this.getItems();
+      })
+    }
+    
   }
 
 
