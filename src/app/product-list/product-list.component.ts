@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   
   addModalRef: BsModalRef;
   editModalRef: BsModalRef;
-  nameFormControl: FormControl = new FormControl('', [Validators.required]);
+  nameFormControl: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^(?![0-9]*$)[a-zA-Z0-9]+$/)]);
   priceFormControl: FormControl = new FormControl('', [Validators.required, Validators.min(1)]);
   items: any[] = [];
   id = '';
